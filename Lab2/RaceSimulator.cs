@@ -17,9 +17,9 @@ public static class RaceSimulator
 
         var participant = raceType switch
         {
-            1 => PrepareToStartGroundRace(),
-            2 => PrepareStartAirRace(distance),
-            3 => PrepareStartMixedRace(distance),
+            1 => AddGroundParticipants(),
+            2 => AddAirParticipants(distance),
+            3 => AddMixedParticipants(distance),
             _ => throw new ArgumentException("Неправильный тип гонки!")
         };
 
@@ -32,7 +32,6 @@ public static class RaceSimulator
     {
         int raceType;
         bool isValid;
-
         do
         {
             Console.WriteLine("Выберите тип гонки:\n1) Наземная\n2) Воздушная\n3) Смешанная");
@@ -62,19 +61,19 @@ public static class RaceSimulator
         return distance;
     }
     
-    private static IEnumerable<Transport> PrepareToStartGroundRace() => 
-        PrepareToStartRace(Initializer.InitGroundTransport().Cast<Transport>());
+    private static IEnumerable<Transport> AddGroundParticipants() => 
+        AddParticipants(Initializer.InitGroundTransport().Cast<Transport>());
     
-    private static IEnumerable<Transport> PrepareStartAirRace(int distance) =>
-        PrepareToStartRace(Initializer.InitAirTransport(distance).Cast<Transport>());
+    private static IEnumerable<Transport> AddAirParticipants(int distance) =>
+        AddParticipants(Initializer.InitAirTransport(distance).Cast<Transport>());
     
-    private static IEnumerable<Transport> PrepareStartMixedRace(int distance) =>
-        PrepareToStartRace(
+    private static IEnumerable<Transport> AddMixedParticipants(int distance) =>
+        AddParticipants(
             Initializer.InitGroundTransport().Cast<Transport>()
                 .Concat(Initializer.InitAirTransport(distance).Cast<Transport>())
         );
 
-    private static IEnumerable<T> PrepareToStartRace<T>(IEnumerable<T> allParticipants) where T : Transport
+    private static IEnumerable<T> AddParticipants<T>(IEnumerable<T> allParticipants) where T : Transport
     {
         var participants = new List<T>();
         var availableTransport = allParticipants.ToList();
@@ -88,7 +87,7 @@ public static class RaceSimulator
             bool isValid;
             do
             {
-                DisplayAvailableTransport((IList<Transport>)availableTransport);
+                PrintAvailableTransport((IList<Transport>)availableTransport);
 
                 Console.WriteLine("Введите соответсвующий номер, чтобы добавить участника в гонку:");
                 var input = Console.ReadLine();
@@ -123,13 +122,13 @@ public static class RaceSimulator
         }
     }
     
-    private static void DisplayAvailableTransport(IList<Transport> participants)
+    private static void PrintAvailableTransport(IList<Transport> transport)
     {
         Console.WriteLine();
         Console.WriteLine("Доступные участники гонки:");
-        for (var i = 0; i < participants.Count; i++)
+        for (var i = 0; i < transport.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {participants[i].Name}");
+            Console.WriteLine($"{i + 1}. {transport[i].Name}");
         }
 
         Console.WriteLine("Для старта гонки введите: старт");
