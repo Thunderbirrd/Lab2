@@ -13,6 +13,7 @@
         <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -40,8 +41,23 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="RaceSimulator.cs" />
+        <Compile Include="Models\Abstracts\AirTransport.cs" />
+        <Compile Include="Models\Abstracts\GroundTransport.cs" />
+        <Compile Include="Models\Abstracts\Transport.cs" />
+        <Compile Include="Models\Classes\Air\Broom.cs" />
+        <Compile Include="Models\Classes\Air\Carpet.cs" />
+        <Compile Include="Models\Classes\Air\Ship.cs" />
+        <Compile Include="Models\Classes\Air\Stupa.cs" />
+        <Compile Include="Models\Classes\Ground\Boots.cs" />
+        <Compile Include="Models\Classes\Ground\Centaur.cs" />
+        <Compile Include="Models\Classes\Ground\ChickenLegsHouse.cs" />
+        <Compile Include="Models\Classes\Ground\PumpkinCoach.cs" />
+        <Compile Include="Models\Initializer.cs" />
         <Compile Include="Program.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="Race\Race.cs" />
+        <Compile Include="Race\RaceTypes.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
