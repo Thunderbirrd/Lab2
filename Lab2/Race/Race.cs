@@ -19,7 +19,6 @@ public class Race
 
     internal void StartRace()
     {
-        Console.WriteLine();
         Console.WriteLine("Время участников:");
         var raceResult = _participants.OrderBy(participant =>
         {
@@ -30,12 +29,6 @@ public class Race
         });
 
         _winner = raceResult.First().Name;
-        Console.WriteLine();
-    }
-
-    internal void HandleResult()
-    {
-
         Console.WriteLine();
         Console.WriteLine($"Победитель: {_winner}!");
     }

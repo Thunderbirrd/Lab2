@@ -25,7 +25,6 @@ public static class RaceSimulator
 
         var race = new Race.Race(participant, distance);
         race.StartRace();
-        race.HandleResult();
     }
     
     private static int GetRaceType()
@@ -95,6 +94,7 @@ public static class RaceSimulator
                 {
                     if (participants.Count is not 0)
                     {
+                        Console.WriteLine();
                         return participants;
                     }
                     Console.WriteLine("В гонку не добавлены участники!");
@@ -116,6 +116,7 @@ public static class RaceSimulator
 
                 if (availableTransport.Count is 0)
                 {
+                    Console.WriteLine();
                     return participants;
                 }
             } while (!isValid);
