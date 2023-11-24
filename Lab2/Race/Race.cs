@@ -21,12 +21,11 @@ public class Race
     {
         Console.WriteLine();
         Console.WriteLine("Время участников:");
-        var raceResult = _participants.OrderBy(transport =>
+        var raceResult = _participants.OrderBy(participant =>
         {
-            var timeResult = transport.Move(_distance);
+            var timeResult = participant.Move(_distance);
             var timeSpan = TimeSpan.FromSeconds(timeResult);
-
-            Console.WriteLine($"{transport.Name}: {timeSpan.Hours}:{timeSpan.Minutes}:{timeSpan.Seconds}");
+            Console.WriteLine($"{participant.Name}: {timeSpan.Hours}:{timeSpan.Minutes}:{timeSpan.Seconds}");
             return timeResult;
         });
 
