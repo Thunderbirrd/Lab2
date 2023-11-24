@@ -17,7 +17,7 @@ public class Race
         _participants = new List<Transport>(participants);
     }
 
-    internal void StartRace()
+    internal void Start()
     {
         Console.WriteLine("Время участников:");
         var raceResult = _participants.OrderBy(participant =>

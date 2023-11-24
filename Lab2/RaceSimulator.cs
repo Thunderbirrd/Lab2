@@ -24,7 +24,7 @@ public static class RaceSimulator
         };
 
         var race = new Race.Race(participant, distance);
-        race.StartRace();
+        race.Start();
     }
     
     private static int GetRaceType()
